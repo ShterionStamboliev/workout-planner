@@ -20,6 +20,7 @@ export function AuthContextProvider({ children }) {
     const [state, dispatch] = useReducer(authReducer, {
         user: null
     });
+    
     console.log('Auth state', state);
     
     return (

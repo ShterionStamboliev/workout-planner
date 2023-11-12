@@ -1,0 +1,16 @@
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar a {
+    margin-left: 1em;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    margin-left: 1em;
+    color: var(--body-primary);
+    cursor: pointer;
+}
