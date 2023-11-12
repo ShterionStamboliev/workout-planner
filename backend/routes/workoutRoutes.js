@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 const {
     createWorkout,
     getAllWorkouts,
@@ -7,6 +6,11 @@ const {
     deleteWorkoutById,
     updateWorkoutById
 } = require('../controllers/workoutController');
+const authGuard = require('../middleware/authGuard');
+
+
+const router = express.Router();
+router.use(authGuard);
 
 router.get('/', getAllWorkouts);
 router.get('/:id', getOneWorkout);
