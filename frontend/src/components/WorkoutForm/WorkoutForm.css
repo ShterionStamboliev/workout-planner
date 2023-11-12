@@ -1,0 +1,49 @@
+.workout-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.workout-form label {
+    text-align: left;
+}
+
+.form-title {
+    margin-bottom: 1em;
+}
+
+.form-group {
+    width: 400px;
+}
+
+.form-inputs {
+    outline: none;
+    border-radius: .4em;
+    border: none;
+    padding: .3em;
+    margin-bottom: .5em;
+}
+
+.workout-button {
+    outline: none;
+    border: none;
+    border-radius: .4em;
+    margin-top: .5em;
+    width: 10em;
+    padding: .4em;
+    align-self: center;
+    background-color: var(--borders);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+
+.workout-button:hover {
+    transform: perspective(1px) translateZ(0) scale(1.05);
+    backface-visibility: hidden;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
