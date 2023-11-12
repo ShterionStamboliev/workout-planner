@@ -4,7 +4,7 @@ App that let's you track your gym progress.
 # Details
 The app is build with [![My Skills](https://skillicons.dev/icons?i=mongo,express,react,nodejs)](https://skillicons.dev) stack.
 ## Used libraries
-* server-side - `jwt, cors, bcrypt, mongoose, dotenv, express`
+* server-side - `jwt, cors, bcrypt, validator, mongoose, dotenv, express`
 * client-side - `react, react-router-dom, date-fns`
 # Installation and usage
 * git clone
