@@ -8,7 +8,6 @@ const {
 } = require('../controllers/workoutController');
 const authGuard = require('../middleware/authGuard');
 
-
 const router = express.Router();
 router.use(authGuard);
 

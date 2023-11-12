@@ -3,15 +3,21 @@ import WorkoutMapper from '../Workouts/WorkoutMapper';
 import './Home.css';
 import WorkoutForm from "../WorkoutForm/WorkoutForm";
 import { useWorkoutContext } from "../../hooks/useWorkoutContext";
+import { useAuthContext } from "../../hooks/useAuthContext"
 
 function Home() {
 
     const { workouts, dispatch } = useWorkoutContext();
+    const { user } = useAuthContext();
 
     useEffect(() => {
         const dataFetcher = async () => {
 
-            const response = await fetch('http://localhost:4000/api/workouts');
+            const response = await fetch('http://localhost:4000/api/workouts', {
+                headers: {
+                    "Authorization": `Bearer ${user.token}`
+                }
+            });
             const data = await response.json();
 
             if (response.ok) {
@@ -21,11 +27,12 @@ function Home() {
                 });
             };
         }
+        if (user) {
+            dataFetcher();
+        }
 
-        return () => dataFetcher();
+    }, [dispatch, user]);
 
-    }, [dispatch]);
-    
     return (
         <>
             <div className="homepage">

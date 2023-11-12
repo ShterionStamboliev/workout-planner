@@ -1,14 +1,24 @@
 import { useWorkoutContext } from '../../hooks/useWorkoutContext';
+import { useAuthContext } from '../../hooks/useAuthContext';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import './WorkoutStyles.css';
 
 function WorkoutMapper({ workout }) {
 
     const { dispatch } = useWorkoutContext();
+    const { user } = useAuthContext();
 
     async function handleDelete() {
+
+        if (!user) {
+            return
+        };
+
         const response = await fetch(`http://localhost:4000/api/workouts/` + workout._id, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${user.token}`
+            }
         });
 
         const data = await response.json();
