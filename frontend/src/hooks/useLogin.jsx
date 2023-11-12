@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from './useAuthContext';
 
-export function useRegister() {
+export function useLogin() {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
     const { dispatch } = useAuthContext();

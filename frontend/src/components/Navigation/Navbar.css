@@ -13,4 +13,7 @@
     margin-left: 1em;
     color: var(--body-primary);
     cursor: pointer;
+    border: 1px solid var(--body-primary);
+    border-radius: .25em;
+    padding: .2em;
 }

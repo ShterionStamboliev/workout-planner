@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useLogin } from '../../hooks/useLogin'
 import './Login.css'
 
 function Login() {
@@ -6,6 +7,8 @@ function Login() {
         email: '',
         password: ''
     });
+
+    const { login, error, isLoading } = useLogin();
 
     const changeHandler = (event) => {
         setValue({
@@ -17,7 +20,7 @@ function Login() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        console.log(value.email, value.password);
+        await login(value.email, value.password);
     }
 
     return (
@@ -31,7 +34,9 @@ function Login() {
                 <label className="login-form-label">Password: </label>
                 <input className="login-form-input" type="password" name="password" onChange={changeHandler} value={value.password} />
 
-                <button className="login-form-button">Log in</button>
+                <button disabled={isLoading} className="login-form-button">Log in</button>
+
+                {error && <div className="error">{error}</div>}
             </form>
         </div>
     )
