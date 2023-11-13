@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export function notify() {
 
     const errorId = 'Error';
+    const successId = 'Success';
 
     function credentialsError(error) {
         toast.error(error, {
@@ -15,24 +16,28 @@ export function notify() {
     function successfulAuth() {
         toast.success('Signed in', {
             position: toast.POSITION.TOP_CENTER,
+            toastId: successId
         });
     }
 
     function successfulLogout() {
         toast.success('Signed out', {
             position: toast.POSITION.TOP_CENTER,
+            toastId: successId
         });
     }
 
     function missingWorkoutTitle(error) {
         toast.error(error, {
-            position: toast.POSITION.TOP_CENTER
+            position: toast.POSITION.TOP_CENTER,
+            toastId: errorId,
         });
     }
 
     function successfulWorkoutPost() {
         toast.success('Workout added', {
-            position: toast.POSITION.TOP_CENTER
+            position: toast.POSITION.TOP_CENTER,
+            toastId: successId
         });
     }
 
