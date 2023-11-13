@@ -14,14 +14,11 @@
     flex-direction: column;
     flex-wrap: wrap;
     text-align: left;
-    margin: auto;
     background-color: var(--text-background);
     border-radius: .5em;
     margin: .5em .5em;
     width: 20em;
     box-shadow: 16px 16px 11px -6px #18262b;
-    -webkit-box-shadow: 16px 16px 11px -6px #18262b;
-    -moz-box-shadow: 16px 16px 11px -6px #18262b;
 }
 
 .workout-details .workout-rows {

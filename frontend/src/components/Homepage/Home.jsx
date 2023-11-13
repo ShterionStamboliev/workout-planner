@@ -31,21 +31,26 @@ function Home() {
             dataFetcher();
         }
 
-    }, [dispatch, user]);
+    }, [workouts, dispatch, user]);
 
     return (
         <>
-            <div className="homepage">
-                <div className="workouts">
-                    {workouts && workouts.map((workout) => (
-                        <WorkoutMapper
-                            workout={workout}
-                            key={workout._id}
-                        />
-                    ))}
-                </div>
-            </div>
             <WorkoutForm />
+            <div className="workouts">
+                {workouts && workouts.map((workout) => (
+                    <WorkoutMapper
+                        workout={workout}
+                        key={workout._id}
+                    />
+                ))}
+                {workouts.length === 0 ?
+                    <div className="no-workouts-text">
+                        <h2>You don't have any workouts added yet.</h2>
+                    </div>
+                    :
+                    ''
+                }
+            </div>
         </>
     );
 }

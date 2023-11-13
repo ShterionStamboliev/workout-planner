@@ -14,7 +14,6 @@ export function workoutsReducer(state, action) {
             }
         case 'DELETE_WORKOUT':
             return {
-                ...state,
                 workouts: state.workouts.filter((workout) => workout._id !== action.payload)
             }
         default:
@@ -24,7 +23,7 @@ export function workoutsReducer(state, action) {
 
 export function WorkoutContextProvider({ children }) {
     const [state, dispatch] = useReducer(workoutsReducer, {
-        workouts: null
+        workouts: []
     });
 
     return (

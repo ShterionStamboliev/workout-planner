@@ -59,39 +59,13 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-header {
-  background: var(--borders);
-  border-radius: .5em;
-  min-width: 636px;
-}
-
-header .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-header a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: all .5s;
-}
-
-header a::after {
-  content: "";
-  height: 5px;
-  width: 5em;
-  color: var(--text-background);
-  transform: scale(1.05);
-}
-
 .pages {
   max-width: 1400px;
   min-width: 636px;
   padding: 2em 0;
   display: flex;
+  flex-direction: column;
   column-gap: 4em;
+  justify-content: center;
+  align-items: center;
 }

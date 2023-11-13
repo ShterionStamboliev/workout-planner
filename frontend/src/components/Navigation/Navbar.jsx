@@ -12,7 +12,7 @@ function Navbar() {
     }
 
     return (
-        <header>
+        <header className='nav-header'>
             <div className="container">
                 <Link to="/">
                     <h1>Workout Coach</h1>

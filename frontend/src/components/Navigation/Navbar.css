@@ -11,9 +11,38 @@
     background: none;
     border: none;
     margin-left: 1em;
-    color: var(--body-primary);
+    color: var(--text-secondary);
     cursor: pointer;
-    border: 1px solid var(--body-primary);
+    border: 2px solid var(--body-primary);
     border-radius: .25em;
     padding: .2em;
+}
+
+header {
+    background: var(--borders);
+    border-radius: .5em;
+    min-width: 605px;
+}
+
+header .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all .5s;
+}
+
+header a::after {
+    content: "";
+    height: 5px;
+    width: 5em;
+    color: var(--text-background);
+    transform: scale(1.05);
 }

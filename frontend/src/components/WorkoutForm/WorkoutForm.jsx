@@ -45,6 +45,7 @@ function WorkoutForm() {
             },
             body: JSON.stringify(workout)
         });
+        
         const data = await response.json();
         
         if (!response.ok) {
