@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useLogin } from '../../hooks/useLogin'
+import 'react-toastify/dist/ReactToastify.css'
 import './Login.css'
+import { ToastContainer, Zoom } from 'react-toastify'
 
 function Login() {
     const [value, setValue] = useState({
@@ -8,7 +10,7 @@ function Login() {
         password: ''
     });
 
-    const { login, error, isLoading } = useLogin();
+    const { login, isLoading } = useLogin();
 
     const changeHandler = (event) => {
         setValue({
@@ -19,6 +21,7 @@ function Login() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        
 
         await login(value.email, value.password);
     }
@@ -35,9 +38,12 @@ function Login() {
                 <input className="login-form-input" type="password" name="password" onChange={changeHandler} value={value.password} />
 
                 <button disabled={isLoading} className="login-form-button">Log in</button>
-
-                {error && <div className="error">{error}</div>}
             </form>
+
+            <ToastContainer
+                transition={Zoom}
+                autoClose={3000}
+            />
         </div>
     )
 }

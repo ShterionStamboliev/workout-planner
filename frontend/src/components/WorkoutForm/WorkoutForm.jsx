@@ -2,10 +2,13 @@ import { useState } from "react";
 import { useWorkoutContext } from "../../hooks/useWorkoutContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import './WorkoutForm.css';
+import { notify } from "../../utils/toastifyError";
 
 function WorkoutForm() {
     const { dispatch } = useWorkoutContext();
     const { user } = useAuthContext();
+
+    const { missingWorkoutTitle, successfulWorkoutPost } = notify();
 
     const [inputValue, setInputValue] = useState({
         title: '',
@@ -45,12 +48,12 @@ function WorkoutForm() {
             },
             body: JSON.stringify(workout)
         });
-        
+
         const data = await response.json();
-        
+
         if (!response.ok) {
             setError(data.error);
-            setEmptyInputs(data.emptyInputs);
+            missingWorkoutTitle(data.error);
         }
         if (response.ok) {
             setInputValue({
@@ -60,6 +63,7 @@ function WorkoutForm() {
             });
             setError(null);
             setEmptyInputs([]);
+            successfulWorkoutPost();
             dispatch({
                 type: 'ADD_WORKOUT',
                 payload: data
@@ -100,12 +104,6 @@ function WorkoutForm() {
                 />
 
                 <button className="workout-button">Add workout</button>
-
-                {error ?
-                    <div className="error">
-                        {error}
-                    </div> : ''
-                }
             </form>
         </div>
     )

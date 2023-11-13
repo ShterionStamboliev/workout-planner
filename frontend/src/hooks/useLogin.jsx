@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useAuthContext } from './useAuthContext';
+import { notify } from "../utils/toastifyError";
 
 export function useLogin() {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
     const { dispatch } = useAuthContext();
+    const { credentialsError, successfulAuth } = notify();
 
     async function login(email, password) {
         setIsLoading(true);
-        setError(null);
 
         const response = await fetch('http://localhost:4000/api/user/login', {
             method: "POST",
@@ -23,6 +24,7 @@ export function useLogin() {
         if (!response.ok) {
             setIsLoading(false);
             setError(data.error);
+            credentialsError(data.error);
         }
 
         if (response.ok) {
@@ -31,6 +33,7 @@ export function useLogin() {
                 type: "LOGIN",
                 payload: data
             });
+            successfulAuth();
             setIsLoading(false);
         }
     }

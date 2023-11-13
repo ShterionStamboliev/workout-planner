@@ -15,7 +15,7 @@
     flex-wrap: wrap;
     text-align: left;
     background-color: var(--text-background);
-    border-radius: .5em;
+    border-radius: .25em;
     margin: .5em .5em;
     width: 20em;
     box-shadow: 16px 16px 11px -6px #18262b;

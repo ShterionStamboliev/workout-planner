@@ -5,6 +5,7 @@ import Home from "./components/Homepage/Home";
 import Navbar from "./components/Navigation/Navbar";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
+import { ToastContainer, Zoom } from "react-toastify";
 
 function App() {
 
@@ -23,6 +24,11 @@ function App() {
 						</Routes>
 					</div>
 				</BrowserRouter>
+
+				<ToastContainer
+					autoClose={3000}
+					transition={Zoom}
+				/>
 			</div>
 		</>
 	);
