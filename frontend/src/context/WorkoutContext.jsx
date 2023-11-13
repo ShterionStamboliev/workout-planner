@@ -6,6 +6,7 @@ export function workoutsReducer(state, action) {
     switch (action.type) {
         case 'LOAD_WORKOUTS':
             return {
+                ...state,
                 workouts: action.payload
             }
         case 'ADD_WORKOUT':
@@ -14,7 +15,22 @@ export function workoutsReducer(state, action) {
             }
         case 'DELETE_WORKOUT':
             return {
+                ...state,
                 workouts: state.workouts.filter((workout) => workout._id !== action.payload)
+            }
+        case 'UPDATE_WORKOUT':
+            return {
+                ...state,
+                workouts: state.workouts.map((workout) => {
+                    if (workout._id == action.payload._id) {
+                        return {
+                            ...workout,
+                            ...action.payload
+                        } 
+                    } else {
+                        return workout
+                    }
+                })
             }
         default:
             return state

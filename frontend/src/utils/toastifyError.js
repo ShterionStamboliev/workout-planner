@@ -41,11 +41,19 @@ export function notify() {
         });
     }
 
+    function successfulUpdate() {
+        toast.success('Workout updated', {
+            position: toast.POSITION.TOP_CENTER,
+            toastId: successId
+        });
+    }
+
     return {
         credentialsError,
         successfulAuth,
         successfulLogout,
         missingWorkoutTitle,
-        successfulWorkoutPost
+        successfulWorkoutPost,
+        successfulUpdate
     }
 }

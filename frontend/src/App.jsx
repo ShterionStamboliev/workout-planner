@@ -6,6 +6,7 @@ import Navbar from "./components/Navigation/Navbar";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import { ToastContainer, Zoom } from "react-toastify";
+import UpdateForm from "./components/WorkoutUpdateForm/UpdateForm";
 
 function App() {
 
@@ -18,9 +19,10 @@ function App() {
 					<Navbar />
 					<div className="pages">
 						<Routes>
-							<Route path="/" element={user ? <Home /> : <Navigate to='/login' />} />
-							<Route path="/login" element={!user ? <Login /> : <Navigate to='/' />} />
-							<Route path="/register" element={!user ? <Register /> : <Navigate to='/' />} />
+							<Route path="/" element={<Home />} />
+							<Route path="/login" element={<Login />} />
+							<Route path="/register" element={<Register />} />
+							<Route path="/update/:id" element={<UpdateForm />} />
 						</Routes>
 					</div>
 				</BrowserRouter>
