@@ -10,15 +10,15 @@ function UpdateForm() {
     const { user } = useAuthContext();
     const { dispatch } = useWorkoutContext();
     const { id } = useParams();
+    const { successfulUpdate } = notify();
     const navigate = useNavigate();
+    const [error, setError] = useState(null);
+    const [emptyInputs, setEmptyInputs] = useState([]);
     const [inputValue, setInputValue] = useState({
         title: '',
         load: '',
         reps: ''
     });
-    const [error, setError] = useState(null);
-    const [emptyInputs, setEmptyInputs] = useState([]);
-    const { successfulUpdate } = notify();
 
     useEffect(() => {
         const workoutFetch = async () => {
@@ -30,7 +30,7 @@ function UpdateForm() {
             });
 
             const data = await response.json();
-            
+
             setInputValue({
                 ...inputValue,
                 title: data.title,
