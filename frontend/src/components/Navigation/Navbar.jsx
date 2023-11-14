@@ -28,7 +28,6 @@ function Navbar() {
                         <div>
                             <Link to="/login">Login</Link>
                             <Link to="/register">Register</Link>
-                            <Link to="/update">Update</Link>
                         </div>
                     )}
                 </nav>

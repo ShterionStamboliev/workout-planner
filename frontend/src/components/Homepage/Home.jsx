@@ -36,20 +36,17 @@ function Home() {
     return (
         <>
             <WorkoutForm />
+
             <div className="workouts">
-                {workouts && workouts.map((workout) => (
+                {(user && workouts.length > 0 ? workouts.map((workout) => (
                     <WorkoutMapper
                         workout={workout}
                         key={workout._id}
                     />
-                ))}
-                {workouts.length === 0 ?
+                )) :
                     <div className="no-workouts-text">
                         <h2>You don't have any workouts added yet.</h2>
-                    </div>
-                    :
-                    ''
-                }
+                    </div>)}
             </div>
         </>
     );

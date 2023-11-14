@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useLogin } from '../../hooks/useLogin'
 import 'react-toastify/dist/ReactToastify.css'
 import './Login.css'
-import { ToastContainer, Zoom } from 'react-toastify'
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const [value, setValue] = useState({
@@ -11,6 +11,7 @@ function Login() {
     });
 
     const { login, isLoading } = useLogin();
+    const navigate = useNavigate();
 
     const changeHandler = (event) => {
         setValue({
@@ -21,9 +22,9 @@ function Login() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        
 
         await login(value.email, value.password);
+        navigate('/');
     }
 
     return (
@@ -39,11 +40,6 @@ function Login() {
 
                 <button disabled={isLoading} className="login-form-button">Log in</button>
             </form>
-
-            <ToastContainer
-                transition={Zoom}
-                autoClose={3000}
-            />
         </div>
     )
 }

@@ -19,7 +19,7 @@ function App() {
 					<Navbar />
 					<div className="pages">
 						<Routes>
-							<Route path="/" element={<Home />} />
+							<Route path="/" element={user ? <Home /> : <Navigate to='/login' />} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />
 							<Route path="/update/:id" element={<UpdateForm />} />

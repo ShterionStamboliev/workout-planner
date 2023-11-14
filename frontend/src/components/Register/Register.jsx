@@ -1,6 +1,8 @@
 import { useState } from "react";
 import './Register.css'
 import { useRegister } from "../../hooks/useRegister";
+import { notify } from "../../utils/toastifyError";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
     const [value, setValue] = useState({
@@ -9,6 +11,8 @@ function Register() {
     });
 
     const { register, error, isLoading } = useRegister();
+    const { successfulRegister } = notify();
+    const navigate = useNavigate();
 
     const changeHandler = (event) => {
         setValue({
@@ -21,6 +25,8 @@ function Register() {
         event.preventDefault();
 
         await register(value.email, value.password);
+        successfulRegister();
+        navigate('/');
     }
 
     return (

@@ -48,12 +48,20 @@ export function notify() {
         });
     }
 
+    function successfulRegister() {
+        toast.success('Successful registration', {
+            position: toast.POSITION.TOP_CENTER,
+            toastId: successId
+        });
+    }
+
     return {
         credentialsError,
         successfulAuth,
         successfulLogout,
         missingWorkoutTitle,
         successfulWorkoutPost,
-        successfulUpdate
+        successfulUpdate,
+        successfulRegister
     }
 }
