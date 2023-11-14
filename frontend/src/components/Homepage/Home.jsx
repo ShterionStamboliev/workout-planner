@@ -11,6 +11,8 @@ function Home() {
     const { user } = useAuthContext();
 
     useEffect(() => {
+        const abortController = new AbortController();
+
         const dataFetcher = async () => {
 
             const response = await fetch('http://localhost:4000/api/workouts', {
@@ -27,9 +29,13 @@ function Home() {
                 });
             };
         }
+
         if (user) {
             dataFetcher();
         }
+        return () => {
+            abortController.abort();
+        };
 
     }, [workouts, dispatch, user]);
 

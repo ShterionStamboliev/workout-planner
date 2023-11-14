@@ -49,6 +49,10 @@ userSchema.statics.signIn = async function(email, password) {
         throw Error('All fields are required.');
     }
 
+    if (!validator.isEmail(email)) {
+        throw Error('Email is not valid.');
+    }
+
     const user = await this.findOne({ email });
     
     if (!user) {

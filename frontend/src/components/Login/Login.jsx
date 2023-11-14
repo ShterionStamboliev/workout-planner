@@ -3,6 +3,7 @@ import { useLogin } from '../../hooks/useLogin'
 import 'react-toastify/dist/ReactToastify.css'
 import './Login.css'
 import { useNavigate } from "react-router-dom";
+import { notify } from "../../utils/toastifyError";
 
 function Login() {
     const [value, setValue] = useState({
@@ -11,6 +12,7 @@ function Login() {
     });
 
     const { login, isLoading } = useLogin();
+    const { credentialsError } = notify();
     const navigate = useNavigate();
 
     const changeHandler = (event) => {
@@ -24,7 +26,6 @@ function Login() {
         event.preventDefault();
 
         await login(value.email, value.password);
-        navigate('/');
     }
 
     return (

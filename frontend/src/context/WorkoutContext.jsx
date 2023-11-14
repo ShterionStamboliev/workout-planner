@@ -6,7 +6,7 @@ export function workoutsReducer(state, action) {
     switch (action.type) {
         case 'LOAD_WORKOUTS':
             return {
-                ...state,
+                ...state.workouts,
                 workouts: action.payload
             }
         case 'ADD_WORKOUT':

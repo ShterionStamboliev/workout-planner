@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { useAuthContext } from './useAuthContext';
+import { notify } from "../utils/toastifyError";
+import { useNavigate } from "react-router-dom";
 
 export function useRegister() {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
     const { dispatch } = useAuthContext();
+    const { credentialsError, successfulRegister } = notify();
+    const navigate = useNavigate();
 
     async function register(email, password) {
         setIsLoading(true);
@@ -22,7 +26,7 @@ export function useRegister() {
 
         if (!response.ok) {
             setIsLoading(false);
-            setError(data.error);
+            credentialsError(data.error);
         }
 
         if (response.ok) {
@@ -31,6 +35,8 @@ export function useRegister() {
                 type: "LOGIN",
                 payload: data
             });
+            successfulRegister();
+            navigate('/');
             setIsLoading(false);
         }
     }

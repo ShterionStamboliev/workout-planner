@@ -44,9 +44,24 @@
     font-size: 1.25em;
     cursor: pointer;
     transition: all .3s ease-in;
+    border: 2px solid red;
+    border-radius: .1em;
 }
 
 .delete-icon:hover {
     transform: rotateY(180deg);
-    color: var(--body-primary);
+    color: var(--warning);
+}
+
+.edit-icon {
+    position: relative;
+    bottom: 1.85em;
+    left: 11.9em;
+    font-size: 1.3em;
+}
+
+.edit-link {
+    position: relative;
+    right: 3em;
+    font-size: 1.1em;
 }
